@@ -1,4 +1,4 @@
-package com.amazon.test;
+package com.aliExpress.test;
 
 import io.fluentlenium.adapter.junit.FluentTest;
 import org.junit.BeforeClass;
