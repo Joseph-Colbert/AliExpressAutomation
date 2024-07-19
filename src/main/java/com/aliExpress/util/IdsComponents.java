@@ -11,10 +11,7 @@ public class IdsComponents extends FluentPage {
     @FindBy(css = "input[id='search-words']")
     public FluentWebElement searchButton;
 
-    @FindBy(css = "div[title*='70'] h3")
-    public FluentWebElement firstProduct;
-
-    @FindBy(css = "html > body > div:nth-of-type(5) > div > div:nth-of-type(1) > div > div:nth-of-type(2) > div > div > div:nth-of-type(7) > button:nth-of-type(2)")
+    @FindBy(xpath = "//button[@class='comet-v2-btn comet-v2-btn-large add-to-cart--addtocart--Qhoji3M comet-v2-btn-important']")
     public FluentWebElement addToCartButton;
 
     @FindBy(css = "div[class='comet-v2-input-number'] div[class='comet-v2-input-number-btn comet-v2-input-number-btn-increase']")
