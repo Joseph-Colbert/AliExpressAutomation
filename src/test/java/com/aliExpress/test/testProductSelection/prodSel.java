@@ -1,6 +1,6 @@
 package com.aliExpress.test.testProductSelection;
 
-import aliExpress.util.LoginAliExpress;
+import com.aliExpress.productSelection.NavigationProcess;
 import com.aliExpress.test.AbstractChomeTest;
 import io.fluentlenium.configuration.FluentConfiguration;
 import io.fluentlenium.core.annotation.Page;
@@ -11,12 +11,12 @@ import org.junit.Test;
 @Wait
 public class prodSel extends AbstractChomeTest {
     @Page
-    LoginAliExpress loginAliExpress;
+    public NavigationProcess navigationProcess;
 
     @Test
-    public void amazonHomePage() {
-        goTo(loginAliExpress)
-                .login();
+    public void aliExpressHomePage() {
+        goTo(navigationProcess)
+                .addProduct("Funko Pop");
 
     }
 }
