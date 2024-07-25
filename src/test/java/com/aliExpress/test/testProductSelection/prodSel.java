@@ -16,7 +16,7 @@ public class prodSel extends AbstractChomeTest {
     @Test
     public void aliExpressHomePage() {
         goTo(navigationProcess)
-                .addProduct("Funko Pop");
-
+                .selectProduct("Funko Pop")
+                .addProduct(400,400);
     }
 }
