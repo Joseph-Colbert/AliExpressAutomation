@@ -2,6 +2,7 @@ package com.aliExpress.test.testProductSelection;
 
 import com.aliExpress.productSelection.NavigationProcess;
 import com.aliExpress.test.AbstractChomeTest;
+import com.aliExpress.test.AbstractGeckoDriver;
 import io.fluentlenium.configuration.FluentConfiguration;
 import io.fluentlenium.core.annotation.Page;
 import io.fluentlenium.core.hook.wait.Wait;
