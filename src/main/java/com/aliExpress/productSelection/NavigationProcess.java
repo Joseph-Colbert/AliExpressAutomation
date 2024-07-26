@@ -7,7 +7,7 @@ import io.fluentlenium.core.FluentPage;
 import io.fluentlenium.core.annotation.Page;
 import io.fluentlenium.core.annotation.PageUrl;
 import io.fluentlenium.core.hook.wait.Wait;
-import org.openqa.selenium.*;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 
 @PageUrl(com.aliExpress.util.AliExpressAbstract.URLALIEXPRESS)
@@ -25,6 +25,7 @@ public class NavigationProcess extends FluentPage {
     @Page
     public ScreenShots screenShots;
 
+
     public NavigationProcess selectProduct(String productName) {
         // Asegurarse de que la ventana del navegador está maximizada
         getDriver().manage().window().maximize();
@@ -35,9 +36,9 @@ public class NavigationProcess extends FluentPage {
     }
 
     public NavigationProcess addProduct(int xOffset, int yOffset) {
-        screenShots.takeScreenShot("2. ProductSelection", SCREENSHOT, this.getDriver());
-        // Crear una instancia de Actions para poder mover el mouse
+        // Crear una instancia de Actions para utilizar codigo selenium
         Actions actions = new Actions(getDriver());
+        screenShots.takeScreenShot("2. ProductSelection", SCREENSHOT, this.getDriver());
         // Agregar un marcador visual con JavaScript
         functions.pointer(xOffset, yOffset);
         // Mover el ratón al centro de la ventana y luego a las coordenadas deseadas
@@ -51,6 +52,7 @@ public class NavigationProcess extends FluentPage {
         functions.waitUntilEnd();
         idsComponents.increaseButton.click();
         screenShots.takeScreenShot("4. QuantityIncrease", SCREENSHOT, this.getDriver());
+        functions.waitUntilEnd();
         idsComponents.goToCartButton.click();
         screenShots.takeScreenShot("5. addToCartMenu", SCREENSHOT, this.getDriver());
         functions.waitUntilEnd();
@@ -59,5 +61,28 @@ public class NavigationProcess extends FluentPage {
         return this;
     }
 
+    public NavigationProcess addProductScroll(int times, int xOffset, int yOffset) {
+        Actions actions = new Actions(getDriver());
+        for (int i = 0; i < times; i++) {
+            actions.sendKeys(Keys.PAGE_DOWN).perform();
+        }
+        functions.waitUntilEnd();
+        functions.pointer(xOffset, yOffset);
+        actions.moveByOffset(xOffset, yOffset).click().perform();
+        functions.waitUntilEnd();
+        functions.removePointer();
+        return this;
+    }
 
+    public NavigationProcess selectOptions(int xOffset, int yOffset) {
+        Actions actions = new Actions(getDriver());
+        functions.waitUntilEnd();
+        functions.changePage();
+        functions.waitUntilEnd();
+        functions.pointer(xOffset, yOffset);
+        actions.moveByOffset(xOffset, yOffset).click().perform();
+        functions.waitUntilEnd();
+        functions.removePointer();
+        return this;
+    }
 }

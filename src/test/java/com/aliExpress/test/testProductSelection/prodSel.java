@@ -10,7 +10,7 @@ import org.junit.Test;
 
 @FluentConfiguration(capabilities = "{\"goog:chromeOptions\": {\"args\": [\"headless\",\"disable-gpu\"]}}")
 @Wait
-public class prodSel extends AbstractChomeTest {
+public class prodSel extends AbstractGeckoDriver {
     @Page
     public NavigationProcess navigationProcess;
 
@@ -18,6 +18,8 @@ public class prodSel extends AbstractChomeTest {
     public void aliExpressHomePage() {
         goTo(navigationProcess)
                 .selectProduct("Funko Pop")
-                .addProduct(400,400);
+                .addProduct(400,400)
+                .addProductScroll(3, 780, 400)
+                .selectOptions(690,400);
     }
 }

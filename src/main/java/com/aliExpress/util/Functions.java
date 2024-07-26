@@ -56,6 +56,26 @@ public class Functions extends FluentPage {
     }
 
     public Functions changePage() {
+        // Guardar el handle (identificador único) de la ventana actual
+        String originalWindow = getDriver().getWindowHandle();
+        // Obtén todos los handles de las ventanas
+        Set<String> windowHandles = getDriver().getWindowHandles();
+        // Cambia el foco a la nueva ventana
+        for (String windowHandle : windowHandles) {
+            if (!windowHandle.equals(originalWindow)) {
+                // Cambia el foco a la nueva ventana
+                getDriver().switchTo().window(windowHandle);
+                // Cierra la ventana original
+                getDriver().switchTo().window(originalWindow).close();
+                // Vuelve a cambiar el foco a la nueva ventana, si es necesario
+                getDriver().switchTo().window(windowHandle);
+                break;// para salir luego de encontrar la intruccion
+            }
+        }
+        return this;
+    }
+
+    /*public Functions changePage() {
         // Guardar el handle(identificador unico que diferencia las pestañas que utiliza Webdriver) de la ventana actual
         String originalWindow = getDriver().getWindowHandle();
         // Obtén todos los handles de las ventanas
@@ -67,8 +87,10 @@ public class Functions extends FluentPage {
                 break;
             }
         }
+        // Si se desea volver a la ventana original
+        //getDriver().switchTo().window(originalWindow);
         return this;
-    }
+    }*/
 
     /**
      * Se la utiliza para dar tiempo de espera entre operaciones.
