@@ -1,6 +1,7 @@
 package com.aliExpress.util;
 
 import io.fluentlenium.core.FluentPage;
+import io.fluentlenium.core.annotation.Page;
 import io.fluentlenium.core.hook.wait.Wait;
 
 import java.util.Set;
@@ -10,6 +11,9 @@ import java.util.concurrent.TimeUnit;
 public class Functions extends FluentPage {
 
     private static final String SEARCH_FORM_HOMEPAGE = "#search_form_homepage";
+
+    @Page
+    public IdsComponents idsComponents;
 
     /**
      * Método para crear un puntero utilizando JavaScript
@@ -55,6 +59,10 @@ public class Functions extends FluentPage {
         return this;
     }
 
+    /**
+     * Método para cambiar la pestaña del navegador y cerrar en la que nos encontrabamos.
+     * @return Page Functions
+     */
     public Functions changePage() {
         // Guardar el handle (identificador único) de la ventana actual
         String originalWindow = getDriver().getWindowHandle();
