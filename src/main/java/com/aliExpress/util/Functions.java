@@ -16,6 +16,18 @@ public class Functions extends FluentPage {
     public IdsComponents idsComponents;
 
     /**
+     * Método creado para el cerrado de la pestaña de busqueda por imagen.
+     * @return Page Functions
+     */
+    public Functions imageSearchBox() {
+        if(idsComponents.uploadCloseButton.present()) {
+            waitUntilEnd();
+            idsComponents.uploadCloseButton.click();
+        }
+        return this;
+    }
+
+    /**
      * Método para crear un puntero utilizando JavaScript
      * @return Page Functions
      */

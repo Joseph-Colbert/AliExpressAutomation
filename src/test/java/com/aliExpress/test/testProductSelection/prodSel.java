@@ -19,7 +19,7 @@ public class prodSel extends AbstractChomeTest {
         goTo(navigationProcess)
                 .selectProduct("Funko Pop")
                 .addProduct(400,400)
-                .addProductScroll(3, 780, 400)
+                .addProductScroll(2, 780, 400)
                 .selectOptions("México",110);
     }
 }

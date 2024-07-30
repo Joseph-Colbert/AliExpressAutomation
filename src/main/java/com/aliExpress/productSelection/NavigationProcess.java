@@ -37,6 +37,8 @@ public class NavigationProcess extends FluentPage {
     public NavigationProcess selectProduct(String productName) {
         // Asegurarse de que la ventana del navegador está maximizada
         getDriver().manage().window().maximize();
+        functions.waitUntilEnd();
+        functions.imageSearchBox();
         screenShots.takeScreenShot("1. HomePage", SCREENSHOT, this.getDriver());
         idsComponents.searchButton.write(productName).getElement().sendKeys(Keys.ENTER);
         functions.waitUntilEnd();
@@ -71,9 +73,11 @@ public class NavigationProcess extends FluentPage {
         screenShots.takeScreenShot("4. QuantityIncrease", SCREENSHOT, this.getDriver());
         functions.waitUntilEnd();
         idsComponents.goToCartButton.click();
-        screenShots.takeScreenShot("5. addToCartMenu", SCREENSHOT, this.getDriver());
+        functions.imageSearchBox();
+        screenShots.takeScreenShot("5. AddToCartMenu", SCREENSHOT, this.getDriver());
         functions.waitUntilEnd();
         idsComponents.aliExpressMenuButton.click();
+        screenShots.takeScreenShot("6. AliExpressMenu", SCREENSHOT, this.getDriver());
         functions.waitUntilEnd();
         return this;
     }
@@ -92,6 +96,7 @@ public class NavigationProcess extends FluentPage {
             actions.sendKeys(Keys.PAGE_DOWN).perform();
         }
         functions.waitUntilEnd();
+        screenShots.takeScreenShot("7. ScrollDown", SCREENSHOT, this.getDriver());
         functions.pointer(xOffset, yOffset);
         actions.moveByOffset(xOffset, yOffset).click().perform();
         functions.waitUntilEnd();
@@ -121,22 +126,34 @@ public class NavigationProcess extends FluentPage {
         functions.waitUntilEnd();
         functions.changePage();
         functions.waitUntilEnd();
+        screenShots.takeScreenShot("8. ProductDetails", SCREENSHOT, this.getDriver());
         idsComponents.country.click();
+        screenShots.takeScreenShot("9. CountryAddress", SCREENSHOT, this.getDriver());
         idsComponents.chooseCountry.click();
         functions.waitUntilEnd();
+        screenShots.takeScreenShot("10. CountryOptions", SCREENSHOT, this.getDriver());
         idsComponents.writeCountry.write(cityName);
+        screenShots.takeScreenShot("11. CountrySelection", SCREENSHOT, this.getDriver());
         idsComponents.selectCountry.click();
+        functions.waitUntilEnd();
+        screenShots.takeScreenShot("12. Options", SCREENSHOT, this.getDriver());
         idsComponents.selectCity.click();
         functions.waitUntilEnd();
-        //idsComponents.actionScroll.click();
         scrollDownElement(scroll);
+        screenShots.takeScreenShot("13. CitySelection", SCREENSHOT, this.getDriver());
         functions.waitUntilEnd();
         idsComponents.chooseCity.click();
+        screenShots.takeScreenShot("14. CityOptions", SCREENSHOT, this.getDriver());
         idsComponents.selectC.click();
+        functions.waitUntilEnd();
         scrollDownElement(scroll);
+        screenShots.takeScreenShot("15. CitySel", SCREENSHOT, this.getDriver());
         idsComponents.chooseC.click();
         functions.waitUntilEnd();
+        screenShots.takeScreenShot("16. CorrectData", SCREENSHOT, this.getDriver());
         idsComponents.applyButton.click();
+        functions.waitUntilEnd();
+        screenShots.takeScreenShot("17. CountryChange", SCREENSHOT, this.getDriver());
         functions.waitUntilEnd();
         return this;
     }
